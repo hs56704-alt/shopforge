@@ -8,16 +8,16 @@ export default function HomePage() {
 
       {/* ── Ambient background glows ── */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[10%] w-[600px] h-[600px] rounded-full bg-violet-600/20 blur-[120px]" />
-        <div className="absolute top-[30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-blue-600/15 blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[30%] w-[600px] h-[600px] rounded-full bg-indigo-600/15 blur-[120px]" />
+        <div className="absolute top-[-20%] left-[10%] w-150 h-150 rounded-full bg-violet-600/20 blur-[120px]" />
+        <div className="absolute top-[30%] right-[-10%] w-125 h-125 rounded-full bg-blue-600/15 blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[30%] w-150 h-150 rounded-full bg-indigo-600/15 blur-[120px]" />
       </div>
 
       {/* ── Navbar ── */}
       <header className="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-black/50 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-xs font-bold">S</div>
+            <div className="h-7 w-7 rounded-lg bg-linear-to-br from-violet-500 to-blue-500 flex items-center justify-center text-xs font-bold">S</div>
             <span className="font-semibold tracking-tight">ShopForge</span>
           </Link>
 
@@ -57,7 +57,7 @@ export default function HomePage() {
             {/* Headline */}
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.95] mb-8">
               <span className="block text-white">Launch your</span>
-              <span className="block bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="block bg-linear-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 store today.
               </span>
             </h1>
@@ -97,7 +97,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Stats Bar ── */}
-        <section className="border-y border-white/5 bg-white/[0.02] py-12 px-6">
+        <section className="border-y border-white/5 bg-white/2 py-12 px-6">
           <div className="mx-auto max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { value: "$2.4M+", label: "Merchant revenue" },
@@ -106,7 +106,7 @@ export default function HomePage() {
               { value: "< 1s", label: "Page load time" },
             ].map((stat) => (
               <div key={stat.label}>
-                <div className="text-3xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
+                <div className="text-3xl font-bold bg-linear-to-r from-white to-white/70 bg-clip-text text-transparent">
                   {stat.value}
                 </div>
                 <div className="text-sm text-white/30 mt-1">{stat.label}</div>
@@ -134,10 +134,10 @@ export default function HomePage() {
                   className={`relative rounded-2xl p-8 transition-all duration-300 ${
                     plan.featured
                       ? "bg-white text-black"
-                      : "border border-white/8 bg-white/[0.03] hover:bg-white/[0.06]"
+                      : "border border-white/8 bg-white/3 hover:bg-white/6"
                   }`}>
                   {plan.featured && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-500 to-blue-500 text-white text-xs font-medium px-3 py-1 rounded-full">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-violet-500 to-blue-500 text-white text-xs font-medium px-3 py-1 rounded-full">
                       Most popular
                     </div>
                   )}
@@ -176,11 +176,11 @@ export default function HomePage() {
         {/* ── CTA ── */}
         <section className="py-32 px-6">
           <div className="mx-auto max-w-3xl text-center relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-blue-600/20 blur-3xl rounded-full" />
+            <div className="absolute inset-0 bg-linear-to-r from-violet-600/20 to-blue-600/20 blur-3xl rounded-full" />
             <div className="relative">
               <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
                 Start selling
-                <span className="block bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="block bg-linear-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
                   today.
                 </span>
               </h2>
@@ -201,7 +201,7 @@ export default function HomePage() {
       <footer className="border-t border-white/5 py-12 px-6">
         <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="h-6 w-6 rounded-md bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-xs font-bold">S</div>
+            <div className="h-6 w-6 rounded-md bg-linear-to-br from-violet-500 to-blue-500 flex items-center justify-center text-xs font-bold">S</div>
             <span className="font-medium text-sm">ShopForge</span>
           </div>
           <p className="text-sm text-white/20">© 2025 ShopForge. All rights reserved.</p>

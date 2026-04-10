@@ -31,7 +31,7 @@ const slides = [
             key={i}
             className="flex items-center gap-4 rounded-xl bg-white/5 border border-white/8 px-4 py-3"
           >
-            <div className={`h-10 w-10 rounded-lg ${p.color} flex-shrink-0`} />
+            <div className={`h-10 w-10 rounded-lg ${p.color} shrink-0`} />
             <div className="flex-1 min-w-0">
               <div className="text-sm font-medium text-white truncate">{p.name}</div>
               <div className="text-xs text-white/40">
@@ -81,7 +81,7 @@ const slides = [
             {[40, 65, 45, 80, 60, 90, 75, 95, 70, 85, 65, 100].map((h, i) => (
               <div
                 key={i}
-                className="flex-1 rounded-t-sm bg-gradient-to-t from-blue-500 to-cyan-400"
+                className="flex-1 rounded-t-sm bg-linear-to-t from-blue-500 to-cyan-400"
                 style={{ height: `${h}%`, opacity: 0.6 + i * 0.03 }}
               />
             ))}
@@ -133,7 +133,7 @@ const slides = [
               </div>
               <div className="h-1.5 rounded-full bg-white/5">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-amber-500 to-orange-400"
+                  className="h-full rounded-full bg-linear-to-r from-amber-500 to-orange-400"
                   style={{ width: `${m.pct}%` }}
                 />
               </div>
@@ -359,11 +359,11 @@ export default function ScrollShowcase() {
 
                   <div>
                     <div
-                      className="relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm overflow-hidden"
+                      className="relative rounded-2xl border border-white/10 bg-white/3 backdrop-blur-sm overflow-hidden"
                       style={{ height: "420px" }}
                     >
                       <div
-                        className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-10`}
+                        className={`absolute inset-0 bg-linear-to-br ${slide.gradient} opacity-10`}
                       />
                       <div className="relative h-full">{slide.ui}</div>
                     </div>
