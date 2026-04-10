@@ -4,7 +4,7 @@ import ScrollShowcase from "@/components/shared/scroll-showcase";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-black text-white ">
 
       {/* ── Ambient background glows ── */}
       <div className="fixed inset-0 pointer-events-none">
