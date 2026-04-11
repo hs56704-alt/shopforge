@@ -1,14 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  ShoppingBag,
-  BarChart3,
-  Zap,
-  Shield,
-  Globe,
-  Palette,
-} from "lucide-react";
+import { ShoppingBag, BarChart3, Zap, Shield, Globe, Palette } from "lucide-react";
 
 const slides = [
   {
@@ -27,10 +20,7 @@ const slides = [
           { name: "Adidas Ultraboost 23", price: "$190", stock: 31, color: "bg-cyan-500" },
           { name: "New Balance 990v5", price: "$185", stock: 0, color: "bg-pink-500" },
         ].map((p, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-4 rounded-xl bg-white/5 border border-white/8 px-4 py-3"
-          >
+          <div key={i} className="flex items-center gap-4 rounded-xl bg-white/5 border border-white/[0.08] px-4 py-3">
             <div className={`h-10 w-10 rounded-lg ${p.color} shrink-0`} />
             <div className="flex-1 min-w-0">
               <div className="text-sm font-medium text-white truncate">{p.name}</div>
@@ -39,13 +29,7 @@ const slides = [
               </div>
             </div>
             <div className="text-sm font-semibold text-white">{p.price}</div>
-            <div
-              className={`text-xs px-2 py-0.5 rounded-full ${
-                p.stock > 0
-                  ? "bg-green-500/20 text-green-400"
-                  : "bg-red-500/20 text-red-400"
-              }`}
-            >
+            <div className={`text-xs px-2 py-0.5 rounded-full ${p.stock > 0 ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>
               {p.stock > 0 ? "Live" : "Sold out"}
             </div>
           </div>
@@ -68,29 +52,25 @@ const slides = [
             { label: "Revenue", value: "$24,829", change: "+18%" },
             { label: "Orders", value: "1,284", change: "+12%" },
           ].map((s) => (
-            <div key={s.label} className="rounded-xl bg-white/5 border border-white/8 p-4">
+            <div key={s.label} className="rounded-xl bg-white/5 border border-white/[0.08] p-4">
               <div className="text-xs text-white/40 mb-1">{s.label}</div>
               <div className="text-2xl font-bold text-white">{s.value}</div>
               <div className="text-xs text-green-400 mt-1">{s.change} this week</div>
             </div>
           ))}
         </div>
-
-        <div className="flex-1 rounded-xl bg-white/5 border border-white/8 p-4 flex flex-col justify-end">
+        <div className="flex-1 rounded-xl bg-white/5 border border-white/[0.08] p-4 flex flex-col justify-end">
           <div className="flex items-end gap-2 h-24">
             {[40, 65, 45, 80, 60, 90, 75, 95, 70, 85, 65, 100].map((h, i) => (
-              <div
-                key={i}
-                className="flex-1 rounded-t-sm bg-linear-to-t from-blue-500 to-cyan-400"
+              <div key={i}
+                className="flex-1 rounded-t-sm bg-gradient-to-t from-blue-500 to-cyan-400"
                 style={{ height: `${h}%`, opacity: 0.6 + i * 0.03 }}
               />
             ))}
           </div>
           <div className="flex justify-between mt-2">
             {["Jan", "Feb", "Mar", "Apr", "May", "Jun"].map((m) => (
-              <span key={m} className="text-[10px] text-white/20">
-                {m}
-              </span>
+              <span key={m} className="text-[10px] text-white/20">{m}</span>
             ))}
           </div>
         </div>
@@ -119,7 +99,6 @@ const slides = [
             Excellent
           </div>
         </div>
-
         <div className="w-full space-y-3">
           {[
             { label: "First Contentful Paint", value: "0.4s", pct: 95 },
@@ -132,10 +111,8 @@ const slides = [
                 <span className="text-amber-400 font-medium">{m.value}</span>
               </div>
               <div className="h-1.5 rounded-full bg-white/5">
-                <div
-                  className="h-full rounded-full bg-linear-to-r from-amber-500 to-orange-400"
-                  style={{ width: `${m.pct}%` }}
-                />
+                <div className="h-full rounded-full bg-gradient-to-r from-amber-500 to-orange-400"
+                  style={{ width: `${m.pct}%` }} />
               </div>
             </div>
           ))}
@@ -160,10 +137,8 @@ const slides = [
           { label: "Auto Backups", status: "Daily", icon: "💾" },
           { label: "DDoS Protection", status: "Enabled", icon: "🔐" },
         ].map((item) => (
-          <div
-            key={item.label}
-            className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/8 px-4 py-3"
-          >
+          <div key={item.label}
+            className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/[0.08] px-4 py-3">
             <span className="text-lg">{item.icon}</span>
             <span className="flex-1 text-sm text-white/80">{item.label}</span>
             <span className="text-xs text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full">
@@ -193,7 +168,7 @@ const slides = [
             { country: "🇨🇦", name: "CAD", sales: "$4.2k" },
             { country: "🇦🇺", name: "AUD", sales: "$3.8k" },
           ].map((c) => (
-            <div key={c.name} className="rounded-xl bg-white/5 border border-white/8 p-3 text-center">
+            <div key={c.name} className="rounded-xl bg-white/5 border border-white/[0.08] p-3 text-center">
               <div className="text-2xl mb-1">{c.country}</div>
               <div className="text-xs text-white/50">{c.name}</div>
               <div className="text-xs font-semibold text-white mt-1">{c.sales}</div>
@@ -215,14 +190,12 @@ const slides = [
       <div className="w-full h-full flex flex-col gap-3 p-6">
         <div className="flex gap-2 mb-2">
           {["#7c3aed", "#2563eb", "#db2777", "#16a34a", "#f59e0b"].map((color) => (
-            <div
-              key={color}
-              className="h-7 w-7 rounded-full border-2 border-white/20 cursor-pointer"
-              style={{ backgroundColor: color }}
-            />
+            <div key={color}
+              className="h-7 w-7 rounded-full border-2 border-white/20 cursor-pointer hover:scale-110 transition-transform"
+              style={{ backgroundColor: color }} />
           ))}
         </div>
-        <div className="flex-1 rounded-xl bg-white/5 border border-white/8 overflow-hidden">
+        <div className="flex-1 rounded-xl bg-white/5 border border-white/[0.08] overflow-hidden">
           <div className="bg-violet-600/30 px-4 py-2 flex items-center gap-2 border-b border-white/5">
             <div className="h-2 w-2 rounded-full bg-white/20" />
             <span className="text-xs text-white/40">yourstore.shopforge.com</span>
@@ -231,7 +204,7 @@ const slides = [
             <div className="h-3 w-24 rounded bg-violet-500/50" />
             <div className="grid grid-cols-2 gap-2">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="aspect-square rounded-lg bg-white/5 border border-white/8" />
+                <div key={i} className="aspect-square rounded-lg bg-white/5 border border-white/[0.08]" />
               ))}
             </div>
           </div>
@@ -246,45 +219,35 @@ export default function ScrollShowcase() {
   const rafRef = useRef<number | null>(null);
   const targetProgressRef = useRef(0);
   const smoothProgressRef = useRef(0);
-
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const updateTarget = () => {
       const el = containerRef.current;
       if (!el) return;
-
       const rect = el.getBoundingClientRect();
       const totalScroll = Math.max(1, el.offsetHeight - window.innerHeight);
       const scrolled = Math.min(Math.max(-rect.top, 0), totalScroll);
-
       targetProgressRef.current = scrolled / totalScroll;
     };
 
     const animate = () => {
       const diff = targetProgressRef.current - smoothProgressRef.current;
       smoothProgressRef.current += diff * 0.08;
-
       if (Math.abs(diff) < 0.0005) {
         smoothProgressRef.current = targetProgressRef.current;
       }
-
       setProgress(smoothProgressRef.current);
       rafRef.current = requestAnimationFrame(animate);
     };
 
-    const onScroll = () => updateTarget();
-    const onResize = () => updateTarget();
-
     updateTarget();
     animate();
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
-
+    window.addEventListener("scroll", updateTarget, { passive: true });
+    window.addEventListener("resize", updateTarget);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", updateTarget);
+      window.removeEventListener("resize", updateTarget);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
@@ -296,21 +259,21 @@ export default function ScrollShowcase() {
   const Icon = activeSlide.icon;
 
   return (
-    <section
-      ref={containerRef}
+    <section ref={containerRef}
       style={{ height: `${slides.length * 100}vh` }}
-      className="relative"
-    >
+      className="relative">
+
       <div className="sticky top-0 h-screen overflow-hidden">
+
+        {/* Tag pill */}
         <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20">
           <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-sm">
-            <Icon className="h-3.5 w-3.5" style={{ color: activeSlide.accent }} />
-            <span className="text-xs text-white/50 transition-all duration-300">
-              {activeSlide.tag}
-            </span>
+            <Icon className="h-3.5 w-3.5 transition-all duration-300" style={{ color: activeSlide.accent }} />
+            <span className="text-xs text-white/50 transition-all duration-300">{activeSlide.tag}</span>
           </div>
         </div>
 
+        {/* Slides */}
         <div className="absolute inset-0">
           {slides.map((slide, i) => {
             const distance = rawIndex - i;
@@ -319,8 +282,7 @@ export default function ScrollShowcase() {
             const y = distance * 36;
 
             return (
-              <div
-                key={slide.id}
+              <div key={slide.id}
                 className="absolute inset-0 flex items-center justify-center px-6"
                 style={{
                   opacity,
@@ -328,9 +290,10 @@ export default function ScrollShowcase() {
                   transition: "opacity 120ms linear",
                   pointerEvents: i === activeIndex ? "auto" : "none",
                   willChange: "transform, opacity",
-                }}
-              >
+                }}>
                 <div className="mx-auto max-w-6xl w-full grid lg:grid-cols-2 gap-16 items-center">
+
+                  {/* Text side */}
                   <div>
                     <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-6 whitespace-pre-line">
                       {slide.headline}
@@ -338,33 +301,27 @@ export default function ScrollShowcase() {
                     <p className="text-lg text-white/40 leading-relaxed max-w-md">
                       {slide.sub}
                     </p>
-
+                    {/* Progress dots */}
                     <div className="flex items-center gap-2 mt-12">
                       {slides.map((_, dotIndex) => (
-                        <div
-                          key={dotIndex}
+                        <div key={dotIndex}
                           className="transition-all duration-300 rounded-full"
                           style={{
                             height: "6px",
                             width: dotIndex === activeIndex ? "24px" : "6px",
-                            backgroundColor:
-                              dotIndex === activeIndex
-                                ? slide.accent
-                                : "rgba(255,255,255,0.15)",
-                          }}
-                        />
+                            backgroundColor: dotIndex === activeIndex
+                              ? slide.accent
+                              : "rgba(255,255,255,0.15)",
+                          }} />
                       ))}
                     </div>
                   </div>
 
+                  {/* UI mockup side */}
                   <div>
-                    <div
-                      className="relative rounded-2xl border border-white/10 bg-white/3 backdrop-blur-sm overflow-hidden"
-                      style={{ height: "420px" }}
-                    >
-                      <div
-                        className={`absolute inset-0 bg-linear-to-br ${slide.gradient} opacity-10`}
-                      />
+                    <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm overflow-hidden"
+                      style={{ height: "420px" }}>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-10`} />
                       <div className="relative h-full">{slide.ui}</div>
                     </div>
                   </div>
@@ -374,16 +331,13 @@ export default function ScrollShowcase() {
           })}
         </div>
 
+        {/* Progress bar */}
         <div className="absolute bottom-0 inset-x-0 h-0.5 bg-white/5 z-20">
-          <div
-            className="h-full bg-white/30"
-            style={{
-              width: `${progress * 100}%`,
-              transition: "width 60ms linear",
-            }}
-          />
+          <div className="h-full bg-white/30"
+            style={{ width: `${progress * 100}%`, transition: "width 60ms linear" }} />
         </div>
 
+        {/* Scroll hint */}
         {activeIndex === 0 && (
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce z-20">
             <span className="text-xs text-white/20">Scroll to explore</span>
