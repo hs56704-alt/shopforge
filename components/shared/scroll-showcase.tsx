@@ -15,13 +15,15 @@ const slides = [
     ui: (
       <div className="w-full h-full flex flex-col gap-3 p-6">
         {[
-          { name: "Air Jordan 1 Retro", price: "$180", stock: 42, color: "bg-violet-500" },
-          { name: "Nike Dunk Low Panda", price: "$120", stock: 8, color: "bg-blue-500" },
-          { name: "Adidas Ultraboost 23", price: "$190", stock: 31, color: "bg-cyan-500" },
-          { name: "New Balance 990v5", price: "$185", stock: 0, color: "bg-pink-500" },
+          { name: "Air Jordan 1 Retro", price: "$180", stock: 42, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop" },
+          { name: "Nike Dunk Low Panda", price: "$120", stock: 8, img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=200&h=200&fit=crop" },
+          { name: "Adidas Ultraboost 23", price: "$190", stock: 31, img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=200&h=200&fit=crop" },
+          { name: "New Balance 990v5", price: "$185", stock: 0,  img: "https://images.unsplash.com/photo-1539185441755-769473a23570?w=200&h=200&fit=crop"},
         ].map((p, i) => (
           <div key={i} className="flex items-center gap-4 rounded-xl bg-white/5 border border-white/[0.08] px-4 py-3">
-            <div className={`h-10 w-10 rounded-lg ${p.color} shrink-0`} />
+            <div className="h-10 w-10 rounded-lg overflow-hidden">
+              <img src={p.img} alt={p.name} className="h-full w-full object-cover" />
+            </div>
             <div className="flex-1 min-w-0">
               <div className="text-sm font-medium text-white truncate">{p.name}</div>
               <div className="text-xs text-white/40">

@@ -12,7 +12,7 @@ const highlights = [
     headline: "Manage everything\nfrom one place.",
     sub: "Add products, set prices, track inventory. Your entire catalog — beautifully organized.",
     visual: (
-  <div className="grid grid-cols-2 gap-2 p-4">  
+  <div className="grid grid-cols-2 gap-4 p-4 py-24">  
     {[
       {
         name: "Air Jordan 1",
@@ -41,7 +41,7 @@ const highlights = [
     ].map((p) => (
       <div key={p.name} className="rounded-xl bg-white/5 border border-white/[0.06] p-3 flex items-center gap-3">
         {/* ← horizontal layout instead of vertical */}
-        <div className="relative h-12 w-12 rounded-lg overflow-hidden flex-shrink-0">
+        <div className="relative h-12 w-12 rounded-xl overflow-hidden flex-shrink-0">
           <Image src={p.img} alt={p.name} fill className="object-cover" />
         </div>
         <div className="min-w-0">
@@ -106,7 +106,7 @@ const highlights = [
     sub: "Real-time revenue, order trends, and customer insights — all in one beautiful dashboard.",
     visual: (
      
-      <div className="p-6 space-y-4">
+      <div className="p-6 space-y-4 py-12">
         <div className="grid grid-cols-2 gap-3">
           {[
             { label: "Revenue", value: "$24,829" },
@@ -175,7 +175,7 @@ const highlights = [
     headline: "Sell to anyone.\nAnywhere on earth.",
     sub: "180+ currencies, automatic tax calculation, and multi-language storefronts built in.",
     visual: (
-      <div className="grid grid-cols-3 gap-2.5 p-6">
+      <div className="grid grid-cols-3 gap-2.5 p-6 py-18">
         {[
           { country: "🇺🇸", name: "USD", sales: "$12.4k" },
           { country: "🇬🇧", name: "GBP", sales: "$8.1k" },
