@@ -17,7 +17,7 @@ export default function HomePage() {
             <span className="text-sm font-medium tracking-tight">ShopForge</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-xs text-white/40">
-            {["Pricing", "Features", "Docs", "Blog"].map((item) => (
+            {["Marketplace", "Pricing", "Features", "Docs", "Blog"].map((item) => (
               <Link key={item} href={`/${item.toLowerCase()}`}
                 className="hover:text-white transition-colors duration-200 tracking-wide">
                 {item}
