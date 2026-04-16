@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ShoppingBag, Search, Store } from "lucide-react";
 import { Metadata } from "next";
 import MarketplaceSearch from "@/components/marketplace/marketplace-search";
+import SortSelect from "@/components/marketplace/sort-select";
 
 export const metadata: Metadata = {
   title: "Marketplace — ShopForge",
@@ -174,18 +175,7 @@ export default async function MarketplacePage({ searchParams }: Props) {
               </p>
 
               {/* Sort */}
-              <form>
-                {q && <input type="hidden" name="q" value={q} />}
-                <select
-                  name="sort"
-                  defaultValue={sort ?? "newest"}
-                  onChange={(e) => e.currentTarget.form?.submit()}
-                  className="bg-white/5 border border-white/[0.08] rounded-lg px-3 py-1.5 text-xs text-white/60 focus:outline-none cursor-pointer">
-                  <option value="newest">Newest first</option>
-                  <option value="price_asc">Price: Low to high</option>
-                  <option value="price_desc">Price: High to low</option>
-                </select>
-              </form>
+              <SortSelect currentSort={sort ?? "newest"} />
             </div>
 
             {/* Products grid */}
