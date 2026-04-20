@@ -78,22 +78,26 @@ export default async function MarketplacePage({ searchParams }: Props) {
       </header>
 
       {/* Hero */}
-      <section className="border-b border-white/[0.06] bg-black py-16 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs tracking-widest text-white/30 uppercase mb-4">
-            Marketplace
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Discover amazing products
-          </h1>
-          <p className="text-white/40 mb-8">
-            Shop from thousands of independent stores — all in one place.
-          </p>
+        <section className="border-b border-white/[0.04] bg-black py-20 px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            {/* Background glow */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-violet-600/8 blur-[100px] rounded-full" />
+            </div>
 
-          {/* Search */}
-          <MarketplaceSearch initialQuery={q ?? ""} />
-        </div>
-      </section>
+            <p className="text-[10px] tracking-[0.3em] text-white/20 uppercase mb-6">
+              Marketplace
+            </p>
+            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">
+              Discover amazing
+              <span className="block gradient-text">products.</span>
+            </h1>
+            <p className="text-white/30 mb-10 max-w-sm mx-auto text-sm">
+              Shop from thousands of independent stores — all in one place.
+            </p>
+            <MarketplaceSearch initialQuery={q ?? ""} />
+          </div>
+        </section>
 
       <div className="mx-auto max-w-7xl px-6 py-10">
         <div className="flex gap-8">

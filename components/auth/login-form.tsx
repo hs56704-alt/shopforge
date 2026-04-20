@@ -35,7 +35,7 @@ export default function LoginForm() {
           type="email"
           required
           placeholder="you@example.com"
-          className="w-full bg-white/5 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors"
+          className="input-dark"
         />
       </div>
 
@@ -51,7 +51,7 @@ export default function LoginForm() {
           type="password"
           required
           placeholder="••••••••"
-          className="w-full bg-white/5 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors"
+          className="input-dark"
         />
       </div>
 

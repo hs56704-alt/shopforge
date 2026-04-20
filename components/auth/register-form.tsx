@@ -31,7 +31,7 @@ export default function RegisterForm() {
           type="text"
           required
           placeholder="John Doe"
-          className="w-full bg-white/5 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors"
+          className="input-dark"
         />
       </div>
 
@@ -43,7 +43,7 @@ export default function RegisterForm() {
           type="email"
           required
           placeholder="you@example.com"
-          className="w-full bg-white/5 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors"
+          className="input-dark"
         />
       </div>
 
@@ -55,7 +55,7 @@ export default function RegisterForm() {
           type="password"
           required
           placeholder="••••••••"
-          className="w-full bg-white/5 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors"
+          className="input-dark"
         />
         <p className="text-[10px] text-white/20 mt-1.5">Minimum 6 characters</p>
       </div>

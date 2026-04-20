@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
         const order = await razorpay.orders.create({
             amount: Math.round(price * 100),
             currency: "INR",
-            receipt: `receipt_${productId}_${Date.now()}`,
+            receipt: `rcpt_${Date.now().toString().slice(-10)}`,
             notes: {
                 productId: productId,
                 storeSlug: storeSlug,
