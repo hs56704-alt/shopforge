@@ -9,7 +9,7 @@ const razorpay = new Razorpay({
 
 export async function POST(request: NextRequest) {
     try {
-        const { productId , storeSlug , price , name } = await req.json();
+        const { productId , storeSlug , price , name } = await request.json();
 
         const product = await prisma.product.findUnique({
             where: {id : productId},
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
             {status : 500},
         );
     }
-    
+
 
 
     }
