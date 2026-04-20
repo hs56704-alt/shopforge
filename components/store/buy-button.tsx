@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ShoppingCart, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface BuyButtonProps {
   productId: string;
@@ -9,6 +10,20 @@ interface BuyButtonProps {
   disabled: boolean;
   price: number;
   name: string;
+}
+
+function loadRazorpay(): Promise<boolean>{
+  return new Promise((resolve) => {
+    if ((window as any).Razorpay) {
+      resolve(true);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
 }
 
 export default function BuyButton({
@@ -19,10 +34,19 @@ export default function BuyButton({
   name,
 }: BuyButtonProps) {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   async function handleBuy() {
     setLoading(true);
     try {
+
+      const loaded = await loadRazorpay();
+      if (!loaded) {
+        alert("Failed to load payment gateway. Please try again.");
+        setLoading(false);
+        return;
+      }
+
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -31,14 +55,44 @@ export default function BuyButton({
 
       const data = await res.json();
 
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert("Checkout failed. Please try again.");
+      if(!res.ok) {
+        alert(data.error ?? "Failed to create order");
         setLoading(false);
+        return;
       }
-    } catch {
-      alert("Something went wrong.");
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: data.amount,
+        currency: data.currency,
+        name: "ShopForge",
+        description: data.productName,
+        order_id: data.orderId,
+        handler: function (response: any) {
+          router.push(`/success?orderId=${response.razorpay_order_id}&storeSlug=${data.storeSlug}`);
+        },
+        prefill: {
+          name: "",
+          email: "",
+          contact: "",
+        },
+        theme: {
+          color: "#7c3aed",
+        },
+        modal: {
+          ondismiss: function() {
+            setLoading(false);
+          }
+        }
+      };
+
+      const razorpay = new (window as any).Razorpay(options);
+      razorpay.open();
+      setLoading(false);
+    }
+      catch (error) {
+      console.error("Payment error:", error);
+      alert("Something went wrong. Please try again.");
       setLoading(false);
     }
   }
@@ -52,10 +106,10 @@ export default function BuyButton({
         ? <Loader2 className="h-5 w-5 animate-spin" />
         : <ShoppingCart className="h-5 w-5" />}
       {loading
-        ? "Redirecting to checkout..."
+        ? "Loading Payment..."
         : disabled
         ? "Sold out"
-        : `Buy now — $${price.toFixed(2)}`}
+        : `Buy now — \u20B9 ${price.toFixed(2)}`}
     </button>
   );
 }
