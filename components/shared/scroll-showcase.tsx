@@ -293,18 +293,18 @@ export default function ScrollShowcase() {
                   pointerEvents: i === activeIndex ? "auto" : "none",
                   willChange: "transform, opacity",
                 }}>
-                <div className="mx-auto max-w-6xl w-full grid lg:grid-cols-2 gap-16 items-center">
+                <div className="mx-auto max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center px-4">
 
                   {/* Text side */}
                   <div>
-                    <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-6 whitespace-pre-line">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 lg:mb-6 whitespace-pre-line">
                       {slide.headline}
                     </h2>
-                    <p className="text-lg text-white/40 leading-relaxed max-w-md">
+                    <p className="text-base lg:text-lg text-white/40 leading-relaxed max-w-md">
                       {slide.sub}
                     </p>
                     {/* Progress dots */}
-                    <div className="flex items-center gap-2 mt-12">
+                    <div className="flex items-center gap-2 mt-8 lg:mt-12">
                       {slides.map((_, dotIndex) => (
                         <div key={dotIndex}
                           className="transition-all duration-300 rounded-full"
@@ -320,9 +320,9 @@ export default function ScrollShowcase() {
                   </div>
 
                   {/* UI mockup side */}
-                  <div>
+                  <div className="hidden sm:block">
                     <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm overflow-hidden"
-                      style={{ height: "420px" }}>
+                      style={{ height: "380px" }}>
                       <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-10`} />
                       <div className="relative h-full">{slide.ui}</div>
                     </div>

@@ -1,3 +1,4 @@
+// app/page.tsx
 import Link from "next/link";
 import { ArrowRight, Star, Zap, Shield, Globe, BarChart3, ShoppingBag } from "lucide-react";
 import ScrollShowcase from "@/components/shared/scroll-showcase";
@@ -7,37 +8,35 @@ export default function HomePage() {
     <div className="bg-black text-white min-h-screen">
 
       {/* ── Navbar ── */}
-      <nav className="fixed top-0 inset-x-0 z-50">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mt-4 rounded-2xl border border-white/[0.06] bg-black/60 backdrop-blur-2xl px-5 h-12 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="h-5 w-5 rounded-md bg-gradient-to-br from-violet-500 to-blue-500" />
-              <span className="text-sm font-semibold tracking-tight">ShopForge</span>
+      <nav className="fixed top-0 inset-x-0 z-50 px-6 pt-4">
+        <div className="mx-auto max-w-6xl rounded-2xl border border-white/[0.06] bg-black/60 backdrop-blur-2xl px-5 h-12 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="h-5 w-5 rounded-md bg-gradient-to-br from-violet-500 to-blue-500" />
+            <span className="text-sm font-semibold tracking-tight">ShopForge</span>
+          </Link>
+
+          <div className="hidden md:flex items-center gap-6 text-xs text-white/40">
+            {[
+              { label: "Marketplace", href: "/marketplace" },
+              { label: "Pricing", href: "/pricing" },
+              { label: "Docs", href: "/docs" },
+            ].map((item) => (
+              <Link key={item.label} href={item.href}
+                className="hover:text-white transition-colors duration-300">
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Link href="/login"
+              className="text-xs text-white/40 hover:text-white transition-colors px-3 py-1.5">
+              Sign in
             </Link>
-
-            <div className="hidden md:flex items-center gap-6 text-xs text-white/40">
-              {[
-                { label: "Marketplace", href: "/marketplace" },
-                { label: "Pricing", href: "/pricing" },
-                { label: "Docs", href: "/docs" },
-              ].map((item) => (
-                <Link key={item.label} href={item.href}
-                  className="hover:text-white transition-colors duration-300">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-2">
-              <Link href="/login"
-                className="text-xs text-white/40 hover:text-white transition-colors px-3 py-1.5">
-                Sign in
-              </Link>
-              <Link href="/register"
-                className="text-xs bg-white text-black font-medium px-4 py-1.5 rounded-full hover:bg-white/90 transition-all duration-200 hover:scale-105 active:scale-95">
-                Get started
-              </Link>
-            </div>
+            <Link href="/register"
+              className="text-xs bg-white text-black font-medium px-4 py-1.5 rounded-full hover:bg-white/90 transition-all duration-200 hover:scale-105 active:scale-95">
+              Get started
+            </Link>
           </div>
         </div>
       </nav>
@@ -48,13 +47,11 @@ export default function HomePage() {
 
           {/* Background */}
           <div className="absolute inset-0 pointer-events-none">
-            {/* Grid */}
             <div className="absolute inset-0 opacity-[0.015]"
               style={{
                 backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
                 backgroundSize: "60px 60px"
               }} />
-            {/* Glows */}
             <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-violet-600/10 blur-[160px] animate-glow" />
             <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-blue-600/10 blur-[120px] animate-glow" style={{ animationDelay: "1.5s" }} />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-indigo-600/5 blur-[200px]" />
@@ -68,8 +65,8 @@ export default function HomePage() {
               Now in public beta — free for 30 days
             </div>
 
-            {/* Main headline */}
-            <h1 className="animate-fade-up-delay-1 text-[clamp(48px,10vw,120px)] font-semibold tracking-[-0.04em] leading-[0.9] mb-8">
+            {/* Headline */}
+            <h1 className="animate-fade-up-delay-1 text-[clamp(40px,8vw,100px)] font-semibold tracking-[-0.04em] leading-[0.9] mb-8">
               <span className="block text-white">The future of</span>
               <span className="block shimmer-text">eCommerce.</span>
             </h1>
@@ -107,10 +104,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Floating dashboard preview */}
-          <div className="animate-fade-up-delay-4 relative mt-20 w-full max-w-4xl animate-float">
+          {/* Floating dashboard */}
+          <div className="animate-fade-up-delay-4 relative mt-12 md:mt-20 w-full max-w-4xl animate-float px-4 md:px-0">
             <div className="rounded-3xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden">
-              {/* Browser bar */}
               <div className="flex items-center gap-2 px-5 py-3 border-b border-white/[0.04] bg-white/[0.02]">
                 <div className="flex gap-1.5">
                   <div className="h-2.5 w-2.5 rounded-full bg-red-500/50" />
@@ -122,8 +118,8 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Dashboard UI */}
-              <div className="p-5 grid grid-cols-4 gap-3">
+              {/* Stats - 2 cols on mobile, 4 on desktop */}
+              <div className="p-5 grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
                   { label: "Revenue", value: "$48,291", change: "+24%", color: "from-violet-500 to-purple-600" },
                   { label: "Orders", value: "2,847", change: "+18%", color: "from-blue-500 to-cyan-600" },
@@ -144,7 +140,6 @@ export default function HomePage() {
                 ))}
               </div>
 
-              {/* Chart */}
               <div className="px-5 pb-5">
                 <div className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-4">
                   <div className="flex items-end gap-1 h-14">
@@ -157,8 +152,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
-            {/* Glow under card */}
             <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-2/3 h-16 bg-violet-600/20 blur-3xl rounded-full" />
           </div>
 
@@ -191,23 +184,25 @@ export default function HomePage() {
 
         {/* ── Scroll showcase ── */}
         <div className="bg-black">
-          <div className="text-center pt-32 pb-8 px-6">
+          <div className="text-center pt-24 md:pt-32 pb-8 px-6">
             <p className="text-[10px] tracking-[0.3em] text-white/20 uppercase mb-5">
               Everything you need
             </p>
-            <h2 className="text-5xl md:text-6xl font-semibold tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
               Built different.
             </h2>
           </div>
           <ScrollShowcase />
         </div>
 
-        {/* ── Features grid ── */}
-        <section className="py-32 px-6 bg-black">
+        {/* ── Features ── */}
+        <section className="py-24 md:py-32 px-6 bg-black">
           <div className="mx-auto max-w-6xl">
-            <div className="text-center mb-20">
+
+            {/* ← Fixed: header is OUTSIDE the grid */}
+            <div className="text-center mb-16 md:mb-20">
               <p className="text-[10px] tracking-[0.3em] text-white/20 uppercase mb-5">Features</p>
-              <h2 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">
+              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight mb-4">
                 Why ShopForge?
               </h2>
               <p className="text-white/30 text-lg max-w-lg mx-auto">
@@ -215,10 +210,11 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4">
+            {/* ← Fixed: proper grid classes */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {features.map((feature, i) => (
                 <div key={feature.title}
-                  className={`glass glass-hover rounded-3xl p-8 ${i === 1 ? "md:mt-8" : ""}`}>
+                  className={`glass glass-hover rounded-3xl p-8 ${i === 1 ? "lg:mt-8" : ""}`}>
                   <div className={`h-12 w-12 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6`}>
                     <feature.icon className="h-5 w-5 text-white" />
                   </div>
@@ -231,17 +227,20 @@ export default function HomePage() {
         </section>
 
         {/* ── Pricing ── */}
-        <section className="py-32 px-6 border-t border-white/[0.04]">
+        <section className="py-24 md:py-32 px-6 border-t border-white/[0.04]">
           <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-16">
+
+            {/* ← Fixed: header is OUTSIDE the grid */}
+            <div className="text-center mb-12 md:mb-16">
               <p className="text-[10px] tracking-[0.3em] text-white/20 uppercase mb-5">Pricing</p>
-              <h2 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">
+              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight mb-4">
                 Simple pricing.
               </h2>
               <p className="text-white/30">No surprises. Cancel anytime.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4">
+            {/* ← Fixed: proper grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {plans.map((plan) => (
                 <div key={plan.name}
                   className={`relative rounded-3xl p-8 transition-all duration-300 ${
@@ -287,14 +286,14 @@ export default function HomePage() {
         </section>
 
         {/* ── Final CTA ── */}
-        <section className="py-40 px-6 text-center">
+        <section className="py-32 md:py-40 px-6 text-center">
           <div className="relative mx-auto max-w-3xl">
             <div className="absolute inset-0 bg-gradient-to-r from-violet-600/10 to-blue-600/10 blur-3xl" />
             <div className="relative">
               <p className="text-[10px] tracking-[0.3em] text-white/20 uppercase mb-8">
                 Get started today
               </p>
-              <h2 className="text-6xl md:text-8xl font-semibold tracking-tight leading-none mb-10">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-none mb-10">
                 Your store.
                 <span className="block gradient-text">Your way.</span>
               </h2>

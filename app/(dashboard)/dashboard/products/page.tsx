@@ -61,7 +61,7 @@ export default async function ProductsPage() {
       ) : (
         <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] overflow-hidden">
           {/* Table header */}
-          <div className="grid grid-cols-12 gap-4 px-6 py-3 border-b border-white/[0.06] text-xs text-white/30 uppercase tracking-wider">
+          <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3 border-b border-white/[0.06] text-xs text-white/30 uppercase tracking-wider">
             <div className="col-span-5">Product</div>
             <div className="col-span-2 text-right">Price</div>
             <div className="col-span-2 text-right">Inventory</div>
@@ -73,69 +73,45 @@ export default async function ProductsPage() {
           <div className="divide-y divide-white/[0.04]">
             {store.products.map((product) => (
               <div key={product.id}
-                className="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-white/[0.02] transition-colors">
+                className="flex flex-col md:grid md:grid-cols-12 gap-2 md:gap-4 px-4 md:px-6 py-4 hover:bg-white/[0.02] transition-colors border-b border-white/[0.02]">
 
                 {/* Product info */}
-                <div className="col-span-5 flex items-center gap-3">
+                <div className="md:col-span-5 flex items-center gap-3">
                   <div className="h-12 w-12 rounded-xl bg-white/5 border border-white/[0.06] flex items-center justify-center flex-shrink-0">
                     {product.images[0] ? (
-                      <img
-                        src={product.images[0]}
-                        alt={product.name}
-                        className="h-full w-full object-cover rounded-xl"
-                      />
+                      <img src={product.images[0]} alt={product.name}
+                        className="h-full w-full object-cover rounded-xl" />
                     ) : (
                       <ShoppingBag className="h-5 w-5 text-white/20" />
                     )}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-white truncate">
-                      {product.name}
-                    </p>
-                    <p className="text-xs text-white/30 truncate mt-0.5">
-                      {product.description ?? "No description"}
-                    </p>
+                    <p className="text-sm font-medium text-white truncate">{product.name}</p>
+                    <p className="text-xs text-white/30 truncate mt-0.5">{product.description ?? "No description"}</p>
                   </div>
                 </div>
 
-                {/* Price */}
-                <div className="col-span-2 text-right">
-                  <span className="text-sm font-semibold text-white">
+               {/* Mobile: show price + status in a row */}
+                <div className="flex items-center justify-between md:contents">
+                  <span className="md:col-span-2 text-sm font-semibold text-white md:text-right">
                     ${product.price.toFixed(2)}
                   </span>
-                </div>
-
-                {/* Inventory */}
-                <div className="col-span-2 text-right">
-                  <span className={`text-sm ${
-                    product.inventory === 0
-                      ? "text-red-400"
-                      : product.inventory < 10
-                      ? "text-amber-400"
-                      : "text-white/60"
+                  <span className={`md:col-span-2 text-sm md:text-right ${
+                    product.inventory === 0 ? "text-red-400"
+                    : product.inventory < 10 ? "text-amber-400"
+                    : "text-white/60"
                   }`}>
                     {product.inventory} left
                   </span>
-                </div>
-
-                {/* Status */}
-                <div className="col-span-2 text-right">
-                  <span className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full font-medium ${
+                  <span className={`md:col-span-2 inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full font-medium md:ml-auto ${
                     product.published
                       ? "bg-green-500/10 text-green-400"
                       : "bg-white/5 text-white/30"
                   }`}>
-                    {product.published
-                      ? <Eye className="h-3 w-3" />
-                      : <EyeOff className="h-3 w-3" />}
                     {product.published ? "Live" : "Draft"}
                   </span>
-                </div>
-
-                {/* Actions */}
-                <div className="col-span-1 flex justify-end">
                   <Link href={`/dashboard/products/${product.id}`}
-                    className="h-8 w-8 rounded-lg hover:bg-white/5 flex items-center justify-center transition-colors">
+                    className="md:col-span-1 h-8 w-8 rounded-lg hover:bg-white/5 flex items-center justify-center transition-colors">
                     <MoreHorizontal className="h-4 w-4 text-white/30" />
                   </Link>
                 </div>

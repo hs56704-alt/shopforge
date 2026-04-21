@@ -42,7 +42,7 @@ export default async function ProductPage({ params }: Props) {
       <div className="grid md:grid-cols-2 gap-12">
 
         {/* Product image */}
-        <div className="aspect-square rounded-3xl bg-white/[0.03] border border-white/[0.06] overflow-hidden flex items-center justify-center">
+        <div className="aspect-square md:aspect-auto md:h-[500px] rounded-3xl bg-white/[0.03] border border-white/[0.06] overflow-hidden flex items-center justify-center">
           {product.images[0] ? (
             <img
               src={product.images[0]}

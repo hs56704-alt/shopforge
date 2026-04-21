@@ -55,34 +55,39 @@ export default async function MarketplacePage({ searchParams }: Props) {
 
       {/* Navbar */}
       <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-black/70 backdrop-blur-xl">
-        <div className="mx-auto max-w-7xl px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="h-6 w-6 rounded-md bg-gradient-to-br from-violet-500 to-blue-500" />
-            <span className="font-semibold text-sm">ShopForge</span>
-          </Link>
-          <nav className="flex items-center gap-6 text-sm text-white/40">
-            <Link href="/marketplace"
-              className="text-white font-medium">
-              Marketplace
+          <div className="mx-auto max-w-7xl px-4 md:px-6 h-14 flex items-center justify-between">
+            
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+              <div className="h-6 w-6 rounded-md bg-gradient-to-br from-violet-500 to-blue-500 flex-shrink-0" />
+              <span className="font-semibold text-sm">ShopForge</span>
             </Link>
-            <Link href="/"
-              className="hover:text-white transition-colors">
-              Home
+
+            {/* Nav links — hide on mobile */}
+            <nav className="hidden md:flex items-center gap-6 text-sm   text-white/40">
+              <Link href="/marketplace" className="text-white font-medium">
+                Marketplace
+              </Link>
+              <Link href="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
+            </nav>
+          {/* CTA */}
+            <Link href="/login"
+              className="text-xs bg-white text-black font-medium px-3 py-1.5 rounded-full hover:bg-white/90 transition-colors flex-shrink-0">
+              <span className="hidden sm:inline">Sell on ShopForge</span>
+              <span className="sm:hidden">Sell</span>
             </Link>
-          </nav>
-          <Link href="/login"
-            className="text-sm bg-white text-black font-medium px-4 py-1.5 rounded-full hover:bg-white/90 transition-colors">
-            Sell on ShopForge
-          </Link>
-        </div>
-      </header>
+
+          </div>
+        </header>
 
       {/* Hero */}
-        <section className="border-b border-white/[0.04] bg-black py-20 px-6">
+        <section className=" relative border-b border-white/[0.04] bg-black py-20 px-6">
           <div className="mx-auto max-w-3xl text-center">
             {/* Background glow */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-violet-600/8 blur-[100px] rounded-full" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-violet-600/[0.08] blur-[100px] rounded-full" />
             </div>
 
             <p className="text-[10px] tracking-[0.3em] text-white/20 uppercase mb-6">
@@ -100,66 +105,84 @@ export default async function MarketplacePage({ searchParams }: Props) {
         </section>
 
       <div className="mx-auto max-w-7xl px-6 py-10">
-        <div className="flex gap-8">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
 
           {/* Sidebar */}
-          <aside className="hidden lg:block w-56 flex-shrink-0">
-
-            {/* Filters */}
-            <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5 mb-5">
-              <h3 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">
-                Price Range
-              </h3>
-              <form className="space-y-3">
-                <div>
-                  <label className="text-xs text-white/30 mb-1 block">Min price</label>
-                  <input
-                    name="min"
-                    type="number"
-                    defaultValue={min}
-                    placeholder="$0"
-                    className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/20 focus:outline-none"
-                  />
+          <aside className="lg:w-56 lg:flex-shrink-0">
+            {/* Mobile filter toggle */}
+            <details className="lg:hidden mb-4">
+              <summary className="glass rounded-2xl px-4 py-3 text-sm text-white/50 cursor-pointer list-none flex items-center justify-between">
+                <span>Filters & Stores</span>
+                <span className="text-white/20">▼</span>
+              </summary>
+              <div className="mt-3 space-y-4">
+                {/* Price filter */}
+                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5">
+                  <h3 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">
+                    Price Range
+                  </h3>
+                  <form className="space-y-3">
+                    <input name="min" type="number" defaultValue={min}
+                      placeholder="$0"
+                      className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/20 focus:outline-none" />
+                    <input name="max" type="number" defaultValue={max}
+                      placeholder="$999"
+                      className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/20 focus:outline-none" />
+                    <button type="submit"
+                      className="w-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium py-2 rounded-lg transition-colors">
+                      Apply filters
+                    </button>
+                  </form>
                 </div>
-                <div>
-                  <label className="text-xs text-white/30 mb-1 block">Max price</label>
-                  <input
-                    name="max"
-                    type="number"
-                    defaultValue={max}
-                    placeholder="$999"
-                    className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/20 focus:outline-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium py-2 rounded-lg transition-colors">
-                  Apply filters
-                </button>
-              </form>
-            </div>
+              </div>
+            </details>
 
-            {/* Stores */}
-            <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5">
-              <h3 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">
-                Stores
-              </h3>
-              <div className="space-y-2">
-                {stores.map((store) => (
-                  <Link key={store.slug}
-                    href={`/store/${store.slug}`}
-                    className="flex items-center justify-between py-1.5 text-sm text-white/50 hover:text-white transition-colors group">
-                    <div className="flex items-center gap-2">
-                      <div className="h-5 w-5 rounded-md bg-gradient-to-br from-violet-500/50 to-blue-500/50 flex items-center justify-center text-[10px] font-bold">
-                        {store.name[0]}
+            {/* Desktop sidebar - same as before */}
+            <div className="hidden lg:block space-y-4">
+              {/* Price filter */}
+              <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5">
+                <h3 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">
+                  Price Range
+                </h3>
+                <form className="space-y-3">
+                  <div>
+                    <label className="text-xs text-white/30 mb-1 block">Min price</label>
+                    <input name="min" type="number" defaultValue={min}
+                      placeholder="$0"
+                      className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/20 focus:outline-none" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-white/30 mb-1 block">Max price</label>
+                    <input name="max" type="number" defaultValue={max}
+                      placeholder="$999"
+                      className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/20 focus:outline-none" />
+                  </div>
+                  <button type="submit"
+                    className="w-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium py-2 rounded-lg transition-colors">
+                    Apply filters
+                  </button>
+                </form>
+              </div>
+
+              {/* Stores */}
+              <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5">
+                <h3 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">
+                  Stores
+                </h3>
+                <div className="space-y-2">
+                  {stores.map((store) => (
+                    <Link key={store.slug} href={`/store/${store.slug}`}
+                      className="flex items-center justify-between py-1.5 text-sm text-white/50 hover:text-white transition-colors">
+                      <div className="flex items-center gap-2">
+                        <div className="h-5 w-5 rounded-md bg-gradient-to-br from-violet-500/50 to-blue-500/50 flex items-center justify-center text-[10px] font-bold">
+                          {store.name[0]}
+                        </div>
+                        <span className="truncate max-w-[100px]">{store.name}</span>
                       </div>
-                      <span className="truncate max-w-[100px]">{store.name}</span>
-                    </div>
-                    <span className="text-xs text-white/20">
-                      {store._count.products}
-                    </span>
-                  </Link>
-                ))}
+                      <span className="text-xs text-white/20">{store._count.products}</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </aside>
