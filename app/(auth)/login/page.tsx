@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import LoginForm from "@/components/auth/login-form";
 import Link from "next/link";
+import Logo from "@/components/shared/logo";
 
 export const metadata: Metadata = { title: "Sign in" };
 
@@ -18,10 +19,7 @@ export default function LoginPage() {
         </div>
 
         {/* Logo */}
-        <Link href="/" className="relative flex items-center gap-2">
-          <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-violet-500 to-blue-500" />
-          <span className="font-semibold">ShopForge</span>
-        </Link>
+        <Logo size="md" />
 
         {/* Quote */}
         <div className="relative">

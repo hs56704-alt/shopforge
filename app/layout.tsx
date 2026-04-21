@@ -13,6 +13,10 @@ export const metadata: Metadata = {
     template: "%s | ShopForge",   
   },
   description: "The easiest way to launch and grow your online store.",
+  icons : {
+    icon : "/icon.tsx",
+    shortcut: "/icon.tsx"
+  },
   keywords: ["ecommerce", "saas", "online store", "shopforge"],
   openGraph: {
     type: "website",

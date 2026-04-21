@@ -26,9 +26,9 @@ export default async function StoreLayout({
           <Link href={`/store/${slug}`} className="font-semibold tracking-tight">
             {store.name}
           </Link>
-          <Link href="/"
-            className="text-xs text-white/30 hover:text-white transition-colors">
-            Powered by ShopForge
+          <Link href="/" className="flex items-center gap-1.5 text-xs text-white/30 hover:text-white transition-colors">
+            <Logo size="sm" href="" showText={false} />
+            <span>Powered by ShopForge</span>
           </Link>
         </div>
       </header>
@@ -42,9 +42,9 @@ export default async function StoreLayout({
           <p className="text-xs text-white/20">
             © 2025 {store.name}. All rights reserved.
           </p>
-          <Link href="/"
-            className="text-xs text-white/20 hover:text-white/50 transition-colors">
-            Powered by ShopForge
+          <Link href="/" className="flex items-center gap-1.5 text-xs text-white/20 hover:text-white/50 transition-colors">
+            <Logo size="sm" href="" showText={false} />
+            <span>Powered by ShopForge</span>
           </Link>
         </div>
       </footer>

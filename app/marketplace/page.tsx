@@ -4,6 +4,7 @@ import { ShoppingBag, Search, Store } from "lucide-react";
 import { Metadata } from "next";
 import MarketplaceSearch from "@/components/marketplace/marketplace-search";
 import SortSelect from "@/components/marketplace/sort-select";
+import Logo from "@/components/shared/logo";
 
 export const metadata: Metadata = {
   title: "Marketplace — ShopForge",
@@ -58,10 +59,7 @@ export default async function MarketplacePage({ searchParams }: Props) {
           <div className="mx-auto max-w-7xl px-4 md:px-6 h-14 flex items-center justify-between">
             
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-              <div className="h-6 w-6 rounded-md bg-gradient-to-br from-violet-500 to-blue-500 flex-shrink-0" />
-              <span className="font-semibold text-sm">ShopForge</span>
-            </Link>
+            <Logo size="sm" />
 
             {/* Nav links — hide on mobile */}
             <nav className="hidden md:flex items-center gap-6 text-sm   text-white/40">

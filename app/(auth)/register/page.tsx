@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import RegisterForm from "@/components/auth/register-form";
 import Link from "next/link";
-
+import Logo from "@/components/shared/logo";
 export const metadata: Metadata = { title: "Create account" };
 
 export default function RegisterPage() {
@@ -15,10 +15,7 @@ export default function RegisterPage() {
           <div className="absolute bottom-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-violet-600/10 blur-[100px]" />
         </div>
 
-        <Link href="/" className="relative flex items-center gap-2">
-          <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-violet-500 to-blue-500" />
-          <span className="font-semibold">ShopForge</span>
-        </Link>
+        <Logo size="md" />
 
         {/* Steps */}
         <div className="relative space-y-6">

@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
+import Logo from "@/components/shared/logo";
 
 const navItems = [
   { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
@@ -67,20 +68,14 @@ export default function Sidebar({ storeSlug }: { storeSlug: string }) {
       <aside className="hidden lg:flex w-56 border-r border-white/[0.04] bg-black flex-col h-screen sticky top-0">
         {/* Logo */}
         <div className="h-14 flex items-center px-5 border-b border-white/[0.04]">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="h-6 w-6 rounded-md bg-gradient-to-br from-violet-500 to-blue-500" />
-            <span className="text-sm font-semibold tracking-tight">ShopForge</span>
-          </Link>
+          <Logo size="sm" />
         </div>
         <NavContent />
       </aside>
 
       {/* ── Mobile header ── */}
       <div className="lg:hidden fixed top-0 inset-x-0 z-50 h-14 border-b border-white/[0.04] bg-black/90 backdrop-blur-xl flex items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="h-6 w-6 rounded-md bg-gradient-to-br from-violet-500 to-blue-500" />
-          <span className="text-sm font-semibold">ShopForge</span>
-        </Link>
+        <Logo size="sm" />
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="h-8 w-8 flex items-center justify-center rounded-lg bg-white/5 border border-white/[0.08]">

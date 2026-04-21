@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { ArrowRight, Star, Zap, Shield, Globe, BarChart3, ShoppingBag } from "lucide-react";
 import ScrollShowcase from "@/components/shared/scroll-showcase";
+import Logo from "@/components/shared/logo"
 
 export default function HomePage() {
   return (
@@ -10,10 +11,9 @@ export default function HomePage() {
       {/* ── Navbar ── */}
       <nav className="fixed top-0 inset-x-0 z-50 px-6 pt-4">
         <div className="mx-auto max-w-6xl rounded-2xl border border-white/[0.06] bg-black/60 backdrop-blur-2xl px-5 h-12 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="h-5 w-5 rounded-md bg-gradient-to-br from-violet-500 to-blue-500" />
-            <span className="text-sm font-semibold tracking-tight">ShopForge</span>
-          </Link>
+          
+
+          <Logo size="sm" />
 
           <div className="hidden md:flex items-center gap-6 text-xs text-white/40">
             {[
