@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CheckCircle, ShoppingBag, ArrowRight } from "lucide-react";
+import Logo from "@/components/shared/logo";
 
 interface Props {
   searchParams: Promise<{ orderId?: string; storeSlug?: string }>;
@@ -10,6 +11,10 @@ export default async function SuccessPage({ searchParams }: Props) {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-6">
+
+      <div className="absolute top-6 left-6">
+        <Logo size="sm" />
+      </div>
 
       {/* Background glow */}
       <div className="fixed inset-0 pointer-events-none">

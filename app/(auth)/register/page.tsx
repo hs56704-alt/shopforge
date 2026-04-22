@@ -57,8 +57,7 @@ export default function RegisterPage() {
         <div className="w-full max-w-sm">
 
           <Link href="/" className="flex lg:hidden items-center gap-2 mb-10">
-            <div className="h-6 w-6 rounded-md bg-gradient-to-br from-violet-500 to-blue-500" />
-            <span className="font-semibold text-sm">ShopForge</span>
+            <Logo size="sm" href="" />
           </Link>
 
           <h1 className="text-3xl font-semibold tracking-tight mb-1">

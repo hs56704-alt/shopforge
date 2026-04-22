@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { XCircle, ArrowLeft } from "lucide-react";
+import Logo from "@/components/shared/logo";
 
 export default function CancelledPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-6">
+
+      <div className="absolute top-6 left-6">
+        <Logo size="sm" />
+      </div>
 
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-red-600/10 blur-[120px]" />
